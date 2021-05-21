@@ -938,7 +938,7 @@ Cookie: MRHSession=%s\r
         # the default route.
         tunnel_ip = ssl_socket.getpeername()[0]
 
-        default_route = os.popen("netstat -rn | grep '^0\.0\.0\.0' | head -n1").read().split()
+        default_route = os.popen("netstat -rn | grep '^0\.0\.0\.0\|^default' | head -n1").read().split()
         gw_ip = default_route[1]
         default_interface = default_route[-1]
         sys.stderr.write("Detected current default route: %r\n" % gw_ip)
