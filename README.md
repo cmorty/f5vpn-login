@@ -34,7 +34,8 @@ You can find the session ID by going to the VPN host in a web browser, logging i
 ```javascript
 document.cookie.match(/MRHSession=(.*?); /)[1]
 ```
-#### Automation
+
+#### Automation (Simple)
 Or, if you have Greasemonkey or Violentmonkey installed, [click here](session-id-grabber.user.js) to install a script to automatically copy the session ID to your clipboard on login.
 
 Finally, to complete the circuit of laziness, write yourself a shell function to read the session ID from the clipboard and pass it to the script:
@@ -47,6 +48,21 @@ function vpnlogin {
 ```
 
 >NOTE: The above is for Linux; on MacOS, use `pbpaste` instead of `xclip`
+
+#### Automation (Comfort)
+
+Prerequisites:
+  * Firefox: Other will certainly work, too, but need documentation and testing
+  * gnome-terminal: You can use every other terminal, too, but need to adjust the `urlwrapper.sh`.
+
+Install the alternative Userscript  [click here](f5vpnlinker.user.js) to replace F5's onclick-handler with a link to a custom protocol.
+
+If you are using *Firefox* go to `about:config` and add `network.protocol-handler.expose.f5vpn` as `Boolean` set to false. 
+
+Now open the login-page and click on the VPN. 
+You will be asked for a program to open the link.
+Choose the `urlwrapper.sh`.
+Now a terminal window should pop up, requesting your password to run sudo.
 
 ## DNS and Routing
 
