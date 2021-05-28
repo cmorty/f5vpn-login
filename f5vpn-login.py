@@ -1036,7 +1036,7 @@ Cookie: MRHSession=%s\r
 
 def usage(exename, s):
     print(
-        "Usage: %s [--skip-dns] [--skip-routes] [--sessionid=sessionid] [--{http,socks5}-proxy=host:port] [[user@]host]" % exename)
+        "Usage: %s [--skip-dns] [--skip-routes] [--sessionid=sessionid] [--{http,socks5}-proxy=host:port] [[user@]host]|[f5vpn://host/sessionid]" % exename)
 
 
 def get_prefs():
@@ -1102,6 +1102,11 @@ def main(argv):
         path, userhost, old_session = prefs.split('\0')
 
     if len(args) > 0:
+        match=re.search("f5vpn://([^/]*)/(.*)", args[0]);
+        if match:
+            args[0] = match.group(1)
+            session = match.group(2)
+
         if args[0] != userhost:
             # Don't attempt to reuse session if switching users or servers.
             old_session = None
