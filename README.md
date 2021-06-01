@@ -54,6 +54,7 @@ function vpnlogin {
 Prerequisites:
   * Firefox: Other will certainly work, too, but need documentation and testing
   * gnome-terminal: You can use every other terminal, too, but need to adjust the `urlwrapper.sh`.
+  * kdocker: Again, you can adjust the `urlwrapper.sh` to your needs.
 
 Install the alternative Userscript  [click here](f5vpnlinker.user.js) to replace F5's onclick-handler with a link to a custom protocol.
 
