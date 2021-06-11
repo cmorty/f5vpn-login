@@ -778,7 +778,7 @@ def run_event_loop(pppd_fd, ssl_socket, ssl, logpipe_r, ppp_ip_up):
         if not data_to_pppd:
             try:
                 ssl_read_blocked_on_write = False
-                data_to_pppd = ssl_socket.read(1)
+                data_to_pppd = ssl_socket.read(10000)
                 if not data_to_pppd:  # EOF
                     print("EOF on ssl")
                     break
