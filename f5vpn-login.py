@@ -1099,7 +1099,10 @@ def main(argv):
     session = None
     userhost = None
     if prefs is not None:
+        try:
         path, userhost, old_session = prefs.split('\0')
+        except:
+            pass
 
     if len(args) > 0:
         match=re.search("f5vpn://([^/]*)/(.*)", args[0]);
