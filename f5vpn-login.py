@@ -336,7 +336,7 @@ class LinuxPlatformSytemd(ResolvectlHelperDNSMixin, LinuxPlatform):
 def get_platform():
     if sys.platform == "darwin":
         return DarwinPlatform()
-    elif sys.platform == "linux":
+    elif sys.platform == "linux" or sys.platform == "linux2":
         # Choose a dns resolver setup routine
         if os.path.exists('/usr/bin/resolvectl'):
             return LinuxPlatformSytemd()
