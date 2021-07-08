@@ -1100,7 +1100,7 @@ def main(argv):
     userhost = None
     if prefs is not None:
         try:
-        path, userhost, old_session = prefs.split('\0')
+            path, userhost, old_session = prefs.split('\0')
         except:
             pass
 
