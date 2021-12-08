@@ -441,7 +441,7 @@ User-Agent: Mozilla/5.0 (Macintosh; U; PPC Mac OS X; en) AppleWebKit/417.9 (KHTM
 Host: %(host)s\r
 \r
 """ % dict(host=host)
-    result = send_request(host, request)
+    result = send_request(host, request).decode("utf-8")
     match = re.search('document.external_data_post_cls.client_data.value = \"([\w=]+)\"', result)
     if match:
         return match.group(1)
@@ -471,7 +471,7 @@ Content-Length: %(len)d\r
 %(body)s
 """ % dict(host=host, len=len(body), body=body)
 
-    result = send_request(host, request)
+    result = send_request(host, request).decode("utf-8")
 
     session = None
     pat = re.compile('^Set-Cookie: MRHSession=([^;]*);', re.MULTILINE)
