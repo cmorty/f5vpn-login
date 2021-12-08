@@ -8,6 +8,14 @@ This software does not require any software from F5 to be installed on the clien
 
 The primary feature this fork adds over upstream is support for two-factor authentication.
 
+## WFM (Works For Me) mode
+
+[This Repo](https://github.com/cmorty/f5vpn-login) is it WFM (Works For Me) mode.
+Thus, if you have an issue you will probably be on your own.
+If you can fix your issue yourself, feel free to create a pull request and I will look at it.
+
+As an alternative there's also [gof5](https://github.com/kayrus/gof5), which however has no comfort login yet.
+
 ## Setup
 
 The script requires [`ppp`](https://www.samba.org/ppp/). If you are on Linux, install it using your package manager. If you are on MacOS, you already have it.
@@ -36,7 +44,7 @@ document.cookie.match(/MRHSession=(.*?); /)[1]
 ```
 
 #### Automation (Simple)
-Or, if you have Greasemonkey or Violentmonkey installed, [click here](session-id-grabber.user.js) to install a script to automatically copy the session ID to your clipboard on login.
+Or, if you have [Greasemonkey](https://www.greasespot.net/) (FF-Only) or [Violentmonkey](https://violentmonkey.github.io/)(Most browsers) installed, [click here](session-id-grabber.user.js) to install a script to automatically copy the session ID to your clipboard on login.
 
 Finally, to complete the circuit of laziness, write yourself a shell function to read the session ID from the clipboard and pass it to the script:
 ```bash
@@ -52,13 +60,16 @@ function vpnlogin {
 #### Automation (Comfort)
 
 Prerequisites:
-  * Firefox: Other will certainly work, too, but need documentation and testing
+  * A User-Script plugin for your browser. The script is tests using Firefox. Others will probably work, too, but are not tested.
+    * [Greasemonkey](https://www.greasespot.net/): FF-Only, but tested)
+    * [Violentmonkey](https://violentmonkey.github.io/): Most browsers
   * gnome-terminal: You can use every other terminal, too, but need to adjust the `urlwrapper.sh`.
   * kdocker: Again, you can adjust the `urlwrapper.sh` to your needs.
 
-Install the alternative Userscript  [click here](f5vpnlinker.user.js) to replace F5's onclick-handler with a link to a custom protocol.
+Install the [alternative Userscript](f5vpnlinker.user.js) to replace F5's `onclick`-handler with a link to a custom protocol.
 
-If you are using *Firefox* go to `about:config` and add `network.protocol-handler.expose.f5vpn` as `Boolean` set to false. 
+If you are using *Firefox* go to `about:config` and add `network.protocol-handler.expose.f5vpn` as `Boolean` set to false.
+(Please feel free to update this readme and create a pull request for other browsers or solutions.)
 
 Now open the login-page and click on the VPN. 
 You will be asked for a program to open the link.
